@@ -1,4 +1,4 @@
-#react-native-jelldesk
+# react-native-jelldesk
 A React Native module which includes UI and business code to allows you to integrate with [Jelldesk](http://www.jelldesk.com/) with minimal effort.
 
 ## Install
@@ -63,9 +63,9 @@ public class MainApplication extends Application implements ReactApplication {
 
 ## Usage
  Use it like so:
- When you want to display Jelldesk embeded widget:
- **token**: token from Jira Service Desk
- **projectKey**: Jira Service Desk project key
+ When you want to display Jelldesk embeded widget:  
+ **token**: token from Jira Service Desk  
+ **projectKey**: Jira Service Desk project key  
  
 ```js
   import { JelldeskBox } from 'react-native-jelldesk';
