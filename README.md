@@ -1,6 +1,10 @@
 # react-native-jelldesk
 A React Native module which includes UI and business code to allows you to integrate with [Jelldesk](http://www.jelldesk.com/) with minimal effort.
 
+<p align="center">
+ <a href="#"><img src="https://drive.google.com/file/d/0BzXme-IPw8d3Tm1sUWgyRWpMcUE/view?usp=sharing"></a>
+</p>
+
 ## Install
 `npm install react-native-jelldesk@latest --save`
 
