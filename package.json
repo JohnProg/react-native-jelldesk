@@ -1,0 +1,27 @@
+{
+  "name": "react-native-jelldesk",
+  "version": "1.0.0",
+  "description": "Jelldesk react native module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "michael",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^6.10.3"
+  },
+  "dependencies": {
+    "react-native-elements": "^0.10.3",
+    "react-native-file-picker": "0.0.5",
+    "react-native-mime-types": "^2.2.0",
+    "react-native-popup-dialog": "^0.7.22",
+    "react-native-vector-icons": "^4.0.0"
+  }
+}
