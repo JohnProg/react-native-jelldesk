@@ -9,8 +9,7 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View,
-  TouchableHighlight
+  View
 } from 'react-native';
 import { JelldeskBox } from 'react-native-jelldesk';
 

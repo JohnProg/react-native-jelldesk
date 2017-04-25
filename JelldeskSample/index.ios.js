@@ -11,6 +11,10 @@ import {
   Text,
   View
 } from 'react-native';
+import { JelldeskBox } from 'react-native-jelldesk';
+
+const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJGSiIsInFzaCI6Imh0dHBzOlwvXC9qc29mdGNvbm5lY3Rvci5hdGxhc3NpYW4ubmV0IiwiaXNzIjoiamlyYTowODE5Mzk3Yy04ZjI5LTQ5Y2MtYjcxNi0wNTU1ZDdhMDIxNzAiLCJleHAiOjE0OTE4ODM5NTYsImlhdCI6MTQ5MTg4Mzc3Nn0.quT6F2gDYiIrKtxWZxzUmO2g4OZSTNOexQm3rTzkYyA';
+const projectkey = 'FJ';
 
 export default class JelldeskSample extends Component {
   render() {
@@ -26,6 +30,8 @@ export default class JelldeskSample extends Component {
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
+		
+		<JelldeskBox token={token} projectKey={projectkey} />
       </View>
     );
   }
