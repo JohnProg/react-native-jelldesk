@@ -3,7 +3,8 @@ import {
 	View,
 	TouchableOpacity,
 	Text,
-	StyleSheet
+	StyleSheet,
+	Platform
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import FilePickerManager from 'react-native-file-picker';
@@ -18,28 +19,32 @@ export default class FileUpload extends Component {
 	}
 
 	openFilePicker() {
-		FilePickerManager.showFilePicker(null, (response) => {
-			//console.log('Response = ', response);
-			if (!response.didCancel && !response.error) {
-				let { files } = this.props;
+		if (Platform.OS === 'android') {
+			FilePickerManager.showFilePicker(null, (response) => {
+				//console.log('Response = ', response);
+				if (!response.didCancel && !response.error) {
+					let { files } = this.props;
 
-				const maxAllow = parseInt(getAppConfig().ticket.ticketAttachmentMaxQueue);
-				if (files.length >= maxAllow) {
-					this.props.feedbackHelper.showLongAlert("You've already reached maxium files");
-				} else {
-					const fileName = response.path.substring(response.path.lastIndexOf('/') + 1);
-					const type = mime.lookup(fileName);
+					const maxAllow = parseInt(getAppConfig().ticket.ticketAttachmentMaxQueue);
+					if (files.length >= maxAllow) {
+						this.props.feedbackHelper.showLongAlert("You've already reached maxium files");
+					} else {
+						const fileName = response.path.substring(response.path.lastIndexOf('/') + 1);
+						const type = mime.lookup(fileName);
 
-					files.push({
-						name: response.path.substring(response.path.lastIndexOf('/') + 1),
-						uri: response.uri,
-						type: type
-					});
-					//update files from parent
-					this.props.addFile(files);
+						files.push({
+							name: response.path.substring(response.path.lastIndexOf('/') + 1),
+							uri: response.uri,
+							type: type
+						});
+						//update files from parent
+						this.props.addFile(files);
+					}
 				}
-			}
-		});
+			});
+		} else {
+			alert('File picker is not supported in ios, we are working on it and update soon!');
+		}
 	}
 
 	render() {
