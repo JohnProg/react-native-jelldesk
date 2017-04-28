@@ -2,8 +2,8 @@
 A React Native module which includes UI and business code to allows you to integrate with [Jelldesk](http://www.jelldesk.com/) with minimal effort.
 
 <p align="center">
- <a href="#"><img src="https://lh3.googleusercontent.com/4D7Mr6N5HyQS_HIVRF1n8MqcuJIT8DjkpqKkyhCjBGUdy8eVBeLQycdMBvFnQjwNDgKzuCmKcbg693Y=w1600-h770-rw" height="667" width="375"></a>
- <a href="#"><img src="https://lh5.googleusercontent.com/pNCfcGNi-JBWRLzyr2KYhBfe04st6HlRZdCOB6wlbwghSBXgDpFZtk9MXQ2P7TKclXIJOlmDa47JnGk=w1600-h770-rw" height="667" width="375">
+ <a href="#"><img src="./screenshot/android-help.png" height="667" width="375"></a>
+ <a href="#"><img src="./screenshot/android-feedback.png" height="667" width="375">
  </a>
 </p>
 
