@@ -1,5 +1,5 @@
 # react-native-jelldesk
-A React Native module (support both IOS & Android) which includes UI and business code to allows you to integrate with [Jelldesk](http://www.jelldesk.com/) with minimal effort.
+A React Native module (support both IOS & Android) which includes UI and business code to allows you to integrate with [Embeddable for JIRA Service Desk](https://jsoftconnector.atlassian.net/wiki/display/JS/Embeddable+for+JIRA+Service+Desk) with minimal effort.
 
 <p align="center">
  <a href="#"><img src="./screenshot/android-help.png" height="667" width="375"></a>
