@@ -39,7 +39,7 @@ export default class FeedbackHelper {
 			jsonResult.forEach(item => {
 				results.push({
 					label: item.name,
-					value: item.id,
+					key: item.id,
 					serviceDeskId: item.serviceDeskId
 				});
 			});

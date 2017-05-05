@@ -5,7 +5,8 @@ import {
 	Picker,
 	KeyboardAvoidingView,
 	Keyboard,
-	ScrollView
+	ScrollView,
+	Dimensions
 } from 'react-native';
 import { 
 	Button, 
@@ -13,6 +14,8 @@ import {
 	FormInput,
 	FormValidationMessage
 } from 'react-native-elements';
+import ModalPicker from 'react-native-modal-picker';
+
 import { 
 	api, 
 	apiPost, 
@@ -24,12 +27,15 @@ import FeedbackHelper from './FeedbackHelper';
 import FileUpload from './FileUpload'
 import { apiConfig, getAppConfig } from './config';
 
+const {height} = Dimensions.get('window');
+
 export default class FeedbackView extends Component {
 	constructor() {
 		super();
 		this.state = {
 			isProccessing: false,
 			requestTypeId: '',
+			requestTypeLabel: '',
 			fullname: '',
 			email: '',
 			summary: '',
@@ -142,17 +148,18 @@ export default class FeedbackView extends Component {
 		return (
 			<ScrollView>
 				<KeyboardAvoidingView style={styles.container} >
-					<FormLabel labelStyle={styles.labelStyle}>{getAppConfig().ticket.ticketRequestTypeLabel} (*)</FormLabel>
-					<Picker
-						selectedValue={requestTypeId}
-						onValueChange={(reqType) => this.setState({requestTypeId: reqType})}
-						style={{marginLeft: 10, color: '#757575'}} >
-						{
-							requestItems.map(item => (
-								<Picker.Item key={item.value} label={item.label} value={item.value} />
-							))
-						}
-					</Picker>
+					<FormLabel labelStyle={styles.labelStyle}>{getAppConfig().ticket.ticketRequestTypeLabel} (*)</FormLabel>		
+					<ModalPicker
+						data={requestItems}
+						initValue="Select request type!"
+						onChange={(option)=>{ this.setState({ requestTypeId: option.key, requestTypeLabel: option.label})}}>
+						
+						<FormInput
+							style={{borderWidth:1, borderColor:'#ccc', padding:10, height:30}}
+							editable={false}
+							placeholder="Select request type!"
+							value={this.state.requestTypeLabel} />
+					</ModalPicker>
 
 					<FormLabel labelStyle={styles.labelStyle}>{getAppConfig().ticket.ticketYourNameLabel} (*)</FormLabel>
 					<FormInput
@@ -211,7 +218,7 @@ FeedbackView.propTypes = {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
+		height: (height - 65),
 		backgroundColor: '#F5F5F5',
 	},
 	labelStyle: {
