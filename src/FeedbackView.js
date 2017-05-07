@@ -57,6 +57,7 @@ export default class FeedbackView extends Component {
 		if (!errorMsg) {
 			this.setState({ isProccessing: true });
 			const reqUrl = `${apiConfig.apiEnpoint}/tickets/create-request`;
+			//console.log('payload', this.feedbackHelper.getPayload(apiConfig.token, this.state));
 			apiPost(reqUrl, this.feedbackHelper.getPayload(apiConfig.token, this.state))
 				.then(json => this.uploadFiles(json));
 		}
@@ -110,6 +111,8 @@ export default class FeedbackView extends Component {
 		} else {
 			this.feedbackHelper.showLongAlert('Failed to save this request, please try again later!');
 		}
+		//enable submit button
+		this.setState({isProccessing: false});
 	}
 
 	keyboardDidShow () {
@@ -137,7 +140,7 @@ export default class FeedbackView extends Component {
 				const requestTypes = this.feedbackHelper.transformResults(json.values);
 				this.setState({ 
 					requestItems: requestTypes, 
-					requestTypeId: (requestTypes.length > 0) ? requestTypes[0].value : '' 
+					requestTypeId: (requestTypes.length > 0) ? requestTypes[0].key : '' 
 				});
 		});
 	}
@@ -158,6 +161,7 @@ export default class FeedbackView extends Component {
 							style={{borderWidth:1, borderColor:'#ccc', padding:10, height:30}}
 							editable={false}
 							placeholder="Select request type!"
+							returnKeyType="go"
 							value={this.state.requestTypeLabel} />
 					</ModalPicker>
 

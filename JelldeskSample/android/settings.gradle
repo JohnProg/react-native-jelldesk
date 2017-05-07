@@ -1,6 +1,0 @@
-rootProject.name = 'JelldeskSample'
-
-include ':app'
-include ':react-native-file-picker'
-
-project(':react-native-file-picker').projectDir = new File(settingsDir, '../node_modules/react-native-file-picker/android')

@@ -3,10 +3,13 @@ import {
 	View,
 	TouchableOpacity,
 	Text,
-	StyleSheet
+	StyleSheet,
+	Platform
 } from 'react-native';
 import { Icon } from 'react-native-elements';
 import FilePickerManager from 'react-native-file-picker';
+import {DocumentPicker, DocumentPickerUtil} from 'react-native-document-picker';
+
 import SelectedFileBox from './SelectedFileBox';
 import { getAppConfig } from './config';
 import * as mime from 'react-native-mime-types';
@@ -18,28 +21,65 @@ export default class FileUpload extends Component {
 	}
 
 	openFilePicker() {
+		if (Platform.OS === 'ios') {
+			this.openIosFilePicker();
+		} else if(Platform.OS === 'android') {
+			this.openAndroidFilePicker();
+		}
+	}
+
+	openAndroidFilePicker = () => {
 		FilePickerManager.showFilePicker(null, (response) => {
 			//console.log('Response = ', response);
 			if (!response.didCancel && !response.error) {
-				let { files } = this.props;
-
-				const maxAllow = parseInt(getAppConfig().ticket.ticketAttachmentMaxQueue);
-				if (files.length >= maxAllow) {
-					this.props.feedbackHelper.showLongAlert("You've already reached maxium files");
-				} else {
-					const fileName = response.path.substring(response.path.lastIndexOf('/') + 1);
-					const type = mime.lookup(fileName);
-
-					files.push({
-						name: response.path.substring(response.path.lastIndexOf('/') + 1),
-						uri: response.uri,
-						type: type
-					});
-					//update files from parent
-					this.props.addFile(files);
-				}
+				this.addFile(response);
 			}
 		});
+	}
+
+	openIosFilePicker = () => {
+		DocumentPicker.show({
+			filetype: ['public.content'],
+		},(error, response) => {
+			//console.log(response);
+			this.addFile(response);
+		});
+	}
+
+	addFile = (response) => {
+		let { files } = this.props;
+
+		if (this.checkMaxFiles(files)) {
+			let fileName = response.fileName;
+			if (response.path) {
+				fileName = response.path.substring(response.path.lastIndexOf('/') + 1);
+			}
+			const type = mime.lookup(fileName);
+
+			const duplicateFiles = files.filter(item => {
+				return item.name === fileName;
+			});
+
+			if (duplicateFiles && duplicateFiles.length == 0) {
+				files.push({
+					name: fileName,
+					uri: response.uri,
+					type: type
+				});
+				//update files from parent
+				this.props.addFile(files);
+			}
+		}
+	}
+
+	checkMaxFiles(files) {
+		let isAllowed = true;
+		const max = parseInt(getAppConfig().ticket.ticketAttachmentMaxQueue);
+		if (files.length >= max) {
+			isAllowed = false;
+			this.props.feedbackHelper.showLongAlert("You've already reached maxium files");
+		}
+		return isAllowed;
 	}
 
 	render() {

@@ -51,7 +51,7 @@ export default class FeedbackHelper {
 		const { requestTypeId, email, fullname, summary, requestItems } = formState;
 
 		const foundItem = requestItems.find((item) => {
-			return item.value === requestTypeId;
+			return item.key === requestTypeId;
 		});
 
 		return {

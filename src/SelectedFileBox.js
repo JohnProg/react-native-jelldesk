@@ -15,7 +15,7 @@ export default class SelectedFileBox extends Component {
 					<Icon
 						name='file-upload' 
 						color='#26C6DA' />
-					<Text numberOfLines={1}>{fileName}</Text>
+					<Text numberOfLines={1} ellipsizeMode='middle' style={{width: '80%'}}>{fileName}</Text>
 				</View>
 				<Icon
 					name='close'
