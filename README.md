@@ -15,7 +15,7 @@ If you are eager to se how react-native-jelldesk looks like, please jump to Jell
 `npm install react-native-jelldesk@latest --save`
 
 ## Dependencies configuration
-1. react-native-vector-icons
+1. react-native-vector-icons 
 Simply use: `react-native link react-native-vector-icons`
 
 2. IOS - file picker
