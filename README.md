@@ -15,10 +15,10 @@ If you are eager to se how react-native-jelldesk looks like, please jump to Jell
 `npm install react-native-jelldesk@latest --save`
 
 ## Dependencies configuration
-1. react-native-vector-icons 
+1. react-native-vector-icons  
 Simply use: `react-native link react-native-vector-icons`
 
-2. IOS - file picker
+2. IOS - file picker  
 Currently we use [react-native-document-picker](https://github.com/Elyx0/react-native-document-picker) for file picker in IOS and its configuration is easy.
 in your project type: `react-native link react-native-document-picker`
 
@@ -27,8 +27,8 @@ Don't forget to enable iCloud to on in xcode
  <a href="#"><img src="./screenshot/icloud-enable.png"></a>
 </p>
 
-3. Android - file picker
-for android fil picke we use react-native-file-picker and it requires manual setup
+3. Android - file picker  
+For android file picke we use react-native-file-picker and it requires manual setup
 
 ### Android
 ```gradle
