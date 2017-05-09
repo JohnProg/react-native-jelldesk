@@ -3,7 +3,7 @@ A React Native module (support both IOS & Android) which includes UI and busines
 
 <p align="center">
  <a href="#"><img src="./screenshot/android-help.png" height="667" width="375"></a>
- <a href="#"><img src="./screenshot/android-feedback.png" height="667" width="375"></a>
+ <a href="#"><img src="./screenshot/ios-ss.gif" height="667" width="375"></a>
 </p>
 
 ## Demo
