@@ -3,15 +3,33 @@ A React Native module (support both IOS & Android) which includes UI and busines
 
 <p align="center">
  <a href="#"><img src="./screenshot/android-help.png" height="667" width="375"></a>
- <a href="#"><img src="./screenshot/android-feedback.png" height="667" width="375">
- </a>
+ <a href="#"><img src="./screenshot/android-feedback.png" height="667" width="375"></a>
 </p>
+
+## Demo
+If you are eager to se how react-native-jelldesk looks like, please jump to JelldeskSample project. 
+
+`npm install` and run the project on ios or android device.
 
 ## Install
 `npm install react-native-jelldesk@latest --save`
 
 ## Dependencies configuration
-1. react-native-file-picker (Android)
+1. react-native-vector-icons
+Simply use: `react-native link react-native-vector-icons`
+
+2. IOS - file picker
+Currently we use [react-native-document-picker](https://github.com/Elyx0/react-native-document-picker) for file picker in IOS and its configuration is easy.
+in your project type: `react-native link react-native-document-picker`
+
+Don't forget to enable iCloud to on in xcode
+<p align="center">
+ <a href="#"><img src="./screenshot/icloud-enable.png"></a>
+</p>
+
+3. Android - file picker
+for android fil picke we use react-native-file-picker and it requires manual setup
+
 ### Android
 ```gradle
 // file: android/settings.gradle
